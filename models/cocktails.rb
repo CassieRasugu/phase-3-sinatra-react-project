@@ -1,8 +1,10 @@
 class Cocktail < ActiveRecord::Base
   has_many :ingredients
+
+  validates :name, presence true
 end
 
-#retrieving cocktails
+##retrieving cocktails
 get '/cocktails' do
   cocktails = Cocktail.all
   cocktails.to_json
@@ -28,11 +30,6 @@ delete '/cocktails/:id' do
   cocktail = Cocktail.find(params[:id])
   cocktail.destroy
 end
-
-
-#class definition
-class Cocktail < ActiveRecord::Base
-  has_many :ingredients
 
   def display_name
     "#{name} Cocktail"
