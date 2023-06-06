@@ -24,17 +24,17 @@ ingredients = [
 
 ingredients.each { |ingredient| Ingredient.create(ingredient) }
 
-# Create Alcoholic Drinks with Prices
-alcoholic_drinks = [
-  { name: 'Whiskey', price: 10.99 },
-  { name: 'Gin', price: 9.99 },
-  { name: 'Vodka', price: 11.99 },
-  { name: 'Tequila', price: 12.99 },
-  { name: 'Rum', price: 8.99 },
-  { name: 'Bourbon', price: 13.99 }
+# Create Drinks with Prices
+drinks = [
+  { name: 'Whiskey', price: 1000 },
+  { name: 'Gin', price: 999 },
+  { name: 'Vodka', price: 1099 },
+  { name: 'Tequila', price: 1299 },
+  { name: 'Rum', price: 899 },
+  { name: 'Bourbon', price: 1399 }
 ]
 
-alcoholic_drinks.each { |drink| AlcoholicDrink.create(drink) }
+drinks.each { |drink| Drinks.create(drink) }
 
 
 puts "✅ Done seeding!"
