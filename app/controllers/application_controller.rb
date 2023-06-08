@@ -1,63 +1,50 @@
-class ApplicationController < Sinatra::Base
-  set :default_content_type, 'application/json'
+require 'sinatra/base'
+require 'sinatra/activerecord'
 
-  get "/" do
-    { message: "Good luck with your project!" }.to_json
+# Load models
+require_relative 'models/cocktail'
+require_relative 'models/ingredient'
+require_relative 'models/alcoholic_drink'
+require_relative 'models/order'
+
+class ApplicationController < Sinatra::Base
+  configure do
+    set :views, 'views'
+    set :public_folder, 'public'
+    enable :sessions
+    set :session_secret, 'your_session_secret'
   end
 
-    #retrieving cocktails
-get '/cocktails' do
-  cocktails = Cocktail.all
-  cocktails.to_json
-end
+  # Root route
+  get '/' do
+    { message: 'Welcome to your API!' }.to_json
+  end
 
-#creating a new cocktail
-post '/cocktails' do
-  data = JSON.parse(request.body.read)
-  cocktail = Cocktail.create(data)
-  cocktail.to_json
-end
+  # Cocktails index route
+  get '/cocktails' do
+    cocktails = Cocktail.all
+    cocktails.to_json
+  end
 
-#update (like button prolly ) on a specific cocktail
-put '/cocktails/:id' do
-  data = JSON.parse(request.body.read)
-  cocktail = Cocktail.find(params[:id])
-  cocktail.update(data)
-  cocktail.to_json
-end
+  # Ingredients index route
+  get '/ingredients' do
+    ingredients = Ingredient.all
+    ingredients.to_json
+  end
 
-#delete a specific cocktail
-delete '/cocktails/:id' do
-  cocktail = Cocktail.find(params[:id])
-  cocktail.destroy
-end
-get '/cocktails' do
-  cocktails = Cocktail.all
-  cocktails.to_json
-end
-get '/drinks' do
-  drinks = Drinks.all
-  drinks.to_json
-end
+  # Alcoholic drinks index route
+  get '/alcoholic_drinks' do
+    alcoholic_drinks = AlcoholicDrink.all
+    alcoholic_drinks.to_json
+  end
 
- # create new ingredient
- post '/ingredients' do
-  data = JSON.parse(request.body.read)
-  ingredient = Ingredient.create(data)
-  ingredient.to_json
-end
+  # Orders index route
+  get '/orders' do
+    orders = Order.all
+    orders.to_json
+  end
 
-# retrieve ingrdient
-get '/ingredients' do
-  ingredients = Ingredient.all
-  ingredients.to_json
+  not_found do
+    { error: 'Route not found' }.to_json
+  end
 end
-
-# delete ingredient
-delete '/ingredients/:id' do
-  ingredient = Ingredient.find(params[:id])
-  ingredient.destroy
-end
-
-end
-
