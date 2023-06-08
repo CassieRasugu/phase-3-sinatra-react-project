@@ -3,7 +3,7 @@ puts "🌱 Seeding spices..."
 require 'faker'
 
 # Generate fake data for cocktails
-5.times do
+50.times do
   Cocktail.create(
     name: Faker::Food.dish,
     description: Faker::Lorem.sentence,
@@ -12,7 +12,7 @@ require 'faker'
 end
 
 # Generate fake data for drinks
-5.times do
+50.times do
   Drinks.create(
     name: Faker::Beer.name,
     picture: Faker::Internet.url,
