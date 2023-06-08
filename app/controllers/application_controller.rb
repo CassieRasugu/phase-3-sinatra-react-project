@@ -1,11 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/activerecord'
 
-# Load models
-require_relative 'models/cocktail'
-require_relative 'models/ingredient'
-require_relative 'models/alcoholic_drink'
-require_relative 'models/order'
 
 class ApplicationController < Sinatra::Base
   configure do
