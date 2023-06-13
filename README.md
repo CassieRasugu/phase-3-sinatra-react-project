@@ -1,5 +1,5 @@
 # Phase 3 Project Guidelines
-this is a link to the react app created http://localhost:3000/cocktails
+this is a link to the react app created https://github.com/CassieRasugu/sublimespirits-app.git
 ## Learning Goals
 
 - Build a web basic API with Sinatra and Active Record to support a React
